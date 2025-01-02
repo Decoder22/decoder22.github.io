@@ -15,9 +15,6 @@ function Contact() {
         <CopyrightText>
           © {new Date().getFullYear()} All Rights Reserved
         </CopyrightText>
-        <AttributionText>
-          Icons by <AttributionLink href="https://icons8.com" target="_blank" rel="noopener noreferrer">Icons8</AttributionLink>
-        </AttributionText>
       </CopyrightSection>
     </ContactSection>
   )
@@ -51,22 +48,6 @@ const CopyrightText = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-size: 0.875rem;
   opacity: 0.8;
-`
-
-const AttributionText = styled.p`
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 0.875rem;
-  opacity: 0.8;
-  margin-top: 0.5rem;
-`
-
-const AttributionLink = styled.a`
-  color: ${({ theme }) => theme.colors.primary};
-  text-decoration: none;
-  
-  &:hover {
-    text-decoration: underline;
-  }
 `
 
 export { Contact } 

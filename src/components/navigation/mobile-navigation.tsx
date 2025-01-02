@@ -79,7 +79,7 @@ export default function MobileNavigation() {
                     duration={500} 
                     onClick={() => setShowMenu(false)}
                 >
-                    About
+                    About Me
                 </MobileMenuItem>
                 <MobileMenuItem 
                     activeClass='active' 
@@ -90,7 +90,7 @@ export default function MobileNavigation() {
                     duration={500} 
                     onClick={() => setShowMenu(false)}
                 >
-                    Portfolio
+                    Projects
                 </MobileMenuItem>
                 <MobileMenuItem 
                     activeClass='active' 

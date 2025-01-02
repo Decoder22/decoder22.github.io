@@ -9,7 +9,7 @@ const NavigationBar = styled.nav`
     width: 100vw;
     position: sticky;
     top: 0;
-    z-index: 3;
+    z-index: 2000;
 `
 
 const StyledDesktopNavigation = styled.div`

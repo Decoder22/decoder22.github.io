@@ -34,21 +34,6 @@ const DesktopMenu = styled.div`
     align-items: center;
 `
 
-const DesktopMenuLink = styled(Link)`
-    padding: 1rem;
-    cursor: pointer;
-    border-radius: 0.25rem;
-
-    &:hover {
-        background-color: blue;
-    }
-
-    &.active {
-
-        background-color: blue;
-    }
-`;
-
 const NavButton = styled(Link)`
   background: none;
   border: none;
@@ -110,7 +95,7 @@ export default function DesktopNavigation() {
                     offset={-80} 
                     duration={500}
                 >
-                    About
+                    About Me
                 </NavButton>
                 <NavButton 
                     activeClass='active' 
@@ -120,7 +105,7 @@ export default function DesktopNavigation() {
                     offset={-80} 
                     duration={500}
                 >
-                    Portfolio
+                    Projects
                 </NavButton>
                 <NavButton 
                     activeClass='active' 

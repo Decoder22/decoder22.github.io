@@ -20,7 +20,7 @@ function SocialInformation() {
         <InfoLabel>Connect With Me</InfoLabel>
         <SocialIconsContainer>
           <SocialLink 
-            href="https://github.com/bjohncox" 
+            href="https://github.com/Decoder22" 
             target="_blank" 
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
