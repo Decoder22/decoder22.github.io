@@ -1,6 +1,20 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { z } from 'zod'
+import { StatusModal } from '../common/status-modal'
+
+interface FormData {
+  name: string
+  email: string
+  message: string
+}
+
+interface ApiResponse {
+  status: number
+  success: boolean
+  message?: string
+  error?: string
+}
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +24,12 @@ function ContactForm() {
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    isSuccess: false,
+    message: ''
+  })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
@@ -19,13 +39,12 @@ function ContactForm() {
     }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
     
+    // Validate form data before submission
     try {
-      const validatedData = contactFormSchema.parse(formData)
-      console.log('Form data:', validatedData)
+      contactFormSchema.parse(formData)
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errorMessages: Record<string, string> = {}
@@ -35,10 +54,67 @@ function ContactForm() {
           }
         })
         setErrors(errorMessages)
+        return // Exit early if validation fails
       }
-    } finally {
-      setIsSubmitting(false)
     }
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbznRxgxhvV4k5Xe0T3CrwCTTFLHKf9a1VDTm4oWv2RVxJgIISmCK8qLWLJfEz2dYlo0/exec', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        redirect: "follow",
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
+      const data: ApiResponse = await response.json()
+
+      console.log(JSON.stringify(data))
+
+      if (data.success) {
+        setModalState({
+          isOpen: true,
+          isSuccess: true,
+          message: data.message || 'Message sent successfully!'
+        })
+        // Reset form and errors
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        })
+        setErrors({})
+      } else {
+        const errorMessage = response.status >= 400 && response.status < 500
+          ? (data.error || "An error occurred while sending your message")
+          : "I'm sorry. An unknown error occurred. Please try sending me an email instead!"
+        
+        setModalState({
+          isOpen: true,
+          isSuccess: false,
+          message: errorMessage
+        })
+      }
+    } catch (error) {
+      setModalState({
+        isOpen: true,
+        isSuccess: false,
+        message: "I'm sorry. An unknown error occurred. Please try sending me an email instead!"
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleCloseModal = () => {
+    setModalState(prev => ({ ...prev, isOpen: false }))
   }
 
   return (
@@ -87,18 +163,45 @@ function ContactForm() {
           {errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
         </FormGroup>
 
-        <SubmitButton type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+        <SubmitButton type="submit" disabled={isLoading}>
+          {isLoading ? 'Sending...' : 'Send Message'}
         </SubmitButton>
       </StyledForm>
+
+      <StatusModal
+        isOpen={modalState.isOpen}
+        isSuccess={modalState.isSuccess}
+        message={modalState.message}
+        onClose={handleCloseModal}
+        autoClose={modalState.isSuccess}
+      />
     </FormContainer>
   )
 }
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters')
+  name: z.string()
+    .min(2, 'Please enter your name (at least 2 characters)')
+    .max(50, 'Name is too long (maximum 50 characters)')
+    .regex(
+      /^[a-zA-Z\s\-']+$/,
+      'Name can only contain English letters, spaces, hyphens, and apostrophes'
+    ),
+  email: z.string()
+    .email('Please enter a valid email address')
+    .min(1, 'Please enter your email address')
+    .max(100, 'Email is too long (maximum 100 characters)')
+    .regex(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      'Please enter a valid email address using only English characters'
+    ),
+  message: z.string()
+    .min(10, 'Please enter a message (at least 10 characters)')
+    .max(250, 'Message is too long (maximum 250 characters)')
+    .regex(
+      /^[a-zA-Z0-9\s.,!?'"()\-_\n]+$/,
+      'Message can only contain English letters, numbers, and basic punctuation'
+    )
 })
 
 const FormContainer = styled.div`
