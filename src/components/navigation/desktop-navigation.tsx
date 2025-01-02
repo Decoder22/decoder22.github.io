@@ -23,7 +23,8 @@ const NavigationBar = styled.div`
 const NavigationBarImage = styled.img`
     height: 3rem;
     width: 4rem;
-    object-fit:cover;
+    object-fit: cover;
+    cursor: pointer;
 `
 
 const DesktopMenu = styled.div`
@@ -76,9 +77,20 @@ const NavButton = styled(Link)`
 `
 
 export default function DesktopNavigation() {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
     return (
         <NavigationBar>
-            <NavigationBarImage src={logo} alt="Logo"></NavigationBarImage>
+            <NavigationBarImage 
+                src={logo} 
+                alt="Logo" 
+                onClick={scrollToTop}
+            />
             <DesktopMenu>
                 <NavButton 
                     activeClass='active' 
