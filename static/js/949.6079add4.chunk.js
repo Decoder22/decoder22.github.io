@@ -46,9 +46,20 @@
     width: 100%;
   }
 `;function m(){return(0,c.jsxs)(a,{children:[(0,c.jsx)(l,{src:s,alt:"Logo",onClick:()=>{window.scrollTo({top:0,behavior:"smooth"})}}),(0,c.jsxs)(d,{children:[(0,c.jsx)(h,{activeClass:"active",to:"hero",spy:!0,smooth:!0,offset:-80,duration:500,children:"Home"}),(0,c.jsx)(h,{activeClass:"active",to:"AboutMe",spy:!0,smooth:!0,offset:-80,duration:500,children:"About Me"}),(0,c.jsx)(h,{activeClass:"active",to:"projects",spy:!0,smooth:!0,offset:-80,duration:500,children:"Projects"}),(0,c.jsx)(h,{activeClass:"active",to:"contact",spy:!0,smooth:!0,offset:-80,duration:500,children:"Contact"})]})]})}var u=o(3586);const p=r.Ay.div`
+    position: relative;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`,f=r.Ay.img`
+    height: 3rem;
+    width: 4rem;
+    object-fit: cover;
+    cursor: pointer;
+`,x=r.Ay.div`
     position: absolute;
     height: 2rem;
-    top: calc(2.5rem - 1rem); // Half of 5rem nav height minus half of button height
     left: 1rem;
     cursor: pointer;
     color: ${e=>{let{theme:t}=e;return t.colors.text}};
@@ -57,10 +68,7 @@
         width: 2rem;
         height: 2rem;
     }
-`,f=r.Ay.div`
-    position: relative;
-    height: 100%;
-`,x=r.Ay.div`
+`,v=r.Ay.div`
     display: ${e=>e.isOpen?"flex":"none"};
     position: fixed;
     top: 0;
@@ -72,7 +80,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`,v=(0,r.Ay)(n.N_)`
+`,y=(0,r.Ay)(n.N_)`
     padding: 1rem;
     color: ${e=>{let{theme:t}=e;return t.colors.text}};
     font-size: 1.5rem;
@@ -82,21 +90,21 @@
     &:hover {
         color: ${e=>{let{theme:t}=e;return t.colors.primary}};
     }
-`;function y(){const[e,t]=(0,i.useState)(!1);return(0,c.jsxs)(f,{children:[(0,c.jsx)(p,{onClick:()=>t(!e),children:(0,c.jsx)(u.A,{})}),(0,c.jsxs)(x,{isOpen:e,children:[(0,c.jsx)(v,{activeClass:"active",to:"hero",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Home"}),(0,c.jsx)(v,{activeClass:"active",to:"AboutMe",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"About Me"}),(0,c.jsx)(v,{activeClass:"active",to:"projects",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Projects"}),(0,c.jsx)(v,{activeClass:"active",to:"contact",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Contact"})]})]})}const j=r.Ay.nav`
+`;function j(){const[e,t]=(0,i.useState)(!1);return(0,c.jsxs)(p,{children:[(0,c.jsx)(x,{onClick:()=>t(!e),children:(0,c.jsx)(u.A,{})}),(0,c.jsx)(f,{src:s,alt:"Logo",onClick:()=>{window.scrollTo({top:0,behavior:"smooth"})}}),(0,c.jsxs)(v,{isOpen:e,children:[(0,c.jsx)(y,{activeClass:"active",to:"hero",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Home"}),(0,c.jsx)(y,{activeClass:"active",to:"AboutMe",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"About Me"}),(0,c.jsx)(y,{activeClass:"active",to:"projects",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Projects"}),(0,c.jsx)(y,{activeClass:"active",to:"contact",spy:!0,smooth:!0,offset:-80,duration:500,onClick:()=>t(!1),children:"Contact"})]})]})}const b=r.Ay.nav`
     background: ${e=>{let{theme:t}=e;return t.colors.primary}};
     height: 5rem;
     width: 100vw;
     position: sticky;
     top: 0;
     z-index: 2000;
-`,b=r.Ay.div`
+`,g=r.Ay.div`
     @media screen and (max-width: 720px) {
         display: none;
     }
-`,g=r.Ay.div`
+`,w=r.Ay.div`
     display: none;
     @media screen and (max-width: 720px) {
         display: block;
     }
-`;function k(){return(0,c.jsxs)(j,{children:[(0,c.jsx)(b,{children:(0,c.jsx)(m,{})}),(0,c.jsx)(g,{children:(0,c.jsx)(y,{})})]})}}}]);
-//# sourceMappingURL=949.32869d2f.chunk.js.map
+`;function k(){return(0,c.jsxs)(b,{children:[(0,c.jsx)(g,{children:(0,c.jsx)(m,{})}),(0,c.jsx)(w,{children:(0,c.jsx)(j,{})})]})}}}]);
+//# sourceMappingURL=949.6079add4.chunk.js.map
