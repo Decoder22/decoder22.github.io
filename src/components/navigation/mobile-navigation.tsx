@@ -5,10 +5,10 @@ import { Menu } from '@mui/icons-material'
 import styled from "styled-components"
 
 const MobileMenuButton = styled.div`
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
+    position: absolute;
+    height: 2rem;
+    top: calc(2.5rem - 1rem); // Half of 5rem nav height minus half of button height
+    left: 1rem;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
     
@@ -16,6 +16,11 @@ const MobileMenuButton = styled.div`
         width: 2rem;
         height: 2rem;
     }
+`
+
+const MobileMenuContainer = styled.div`
+    position: relative;
+    height: 100%;
 `
 
 const MobileMenuOverlay = styled.div<{ isOpen: boolean }>`
@@ -48,7 +53,7 @@ export default function MobileNavigation() {
     const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <>
+        <MobileMenuContainer>
             <MobileMenuButton onClick={() => setShowMenu(!showMenu)}>
                 <Menu />
             </MobileMenuButton>
@@ -99,6 +104,6 @@ export default function MobileNavigation() {
                     Contact
                 </MobileMenuItem>
             </MobileMenuOverlay>
-        </>
+        </MobileMenuContainer>
     )
 }
