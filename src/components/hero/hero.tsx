@@ -22,34 +22,74 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Adds the dark overlay */
 `;
 
 const TextContainer = styled.div`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
-  width: 50%; /* Left half of the screen */
-  transform: translateY(-50%); /* Vertically center the text */
-  padding-left: 20px; /* Add some padding from the left edge */
+  width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align text to the left */
-  z-index: 2; /* Ensure the text appears above the overlay */
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.5) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 48px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
-  color: white;
   margin: 0;
+  max-width: 90%;
+  color: #000000;
+
+  span {
+    color: ${({ theme }) => theme.colors.primary};
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2em;
+  }
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.5em;
-  font-weight: normal;
-  color: darkblue;
-  margin-top: 10px;
+  font-size: 2em;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 16px;
+  max-width: 90%;
+
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2em;
+  }
 `;
 
 export default function Hero(){
@@ -58,7 +98,7 @@ export default function Hero(){
             <HeroImage src={bg} alt="Hero" />
             <Overlay />
             <TextContainer>
-                <Title>Hello, My name is Brian Johncox</Title>
+                <Title>Hello, My name is <span>Brian Johncox</span></Title>
                 <Subtitle>I am a Full Stack Engineer</Subtitle>
             </TextContainer>
         </HeroContainer>

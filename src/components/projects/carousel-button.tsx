@@ -17,7 +17,7 @@ function CarouselButton({ direction, onClick }: CarouselButtonProps) {
 export { CarouselButton }
 
 const Button = styled.button`
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.tertiary};
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -30,7 +30,7 @@ const Button = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryHover};
+    background: ${({ theme }) => theme.colors.primary};
   }
 
   @media (max-width: 768px) {

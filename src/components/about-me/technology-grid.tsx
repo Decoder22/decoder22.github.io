@@ -19,7 +19,7 @@ const TechCard = styled.div`
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: #ffffff10;
+    background-color: ${({ theme }) => theme.colors.tertiary};
     border-radius: 8px;
     transition: transform 0.2s ease-in-out;
 
@@ -35,7 +35,7 @@ const TechCard = styled.div`
     }
 
     span {
-        color: #fff;
+        color: ${({ theme }) => theme.colors.text};
         font-size: 1rem;
     }
 `

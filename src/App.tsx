@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Projects } from './components/projects/projects'
 import { theme } from './theme/theme'
+import { Contact } from './components/contact/contact'
 
 // Using dynamic imports for better code splitting
 const Navigation = React.lazy(() => import('./components/navigation/navigation'))
@@ -47,6 +48,7 @@ export default function App() {
             <Hero />
             <AboutMe />
             <Projects />
+            <Contact />
           </Suspense>
         </ErrorBoundary>
       </StyledApp>
@@ -59,4 +61,5 @@ const StyledApp = styled.div`
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.background};
 `

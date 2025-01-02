@@ -1,7 +1,8 @@
 export interface ProjectData {
-  id: number
+  id: number,
   title: string
   description: string
-  repoUrl: string
-  type: 'repository'
+  repoUrl?: string
+  type: string
+  projectUrl?: string // Optional project URL
 } 

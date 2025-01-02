@@ -3,17 +3,18 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { ProjectCard } from './project-card'
 import { ProjectData } from './projects.types'
+import { SectionTitle } from '../common/section-title'
 
 function Projects() {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: Math.min(projectsData.length, 3),
       slidesToSlide: 1
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
-      items: 2,
+      items: Math.min(projectsData.length, 2),
       slidesToSlide: 1
     },
     mobile: {
@@ -25,14 +26,15 @@ function Projects() {
 
   return (
     <ProjectsSection id="projects">
-      <ProjectsTitle>Projects</ProjectsTitle>
+      <SectionTitle isSecondary>Projects</SectionTitle>
       <CarouselContainer>
         <Carousel
           responsive={responsive}
-          infinite={true}
+          infinite={projectsData.length > 1}
           keyBoardControl={true}
           containerClass="carousel-container"
           itemClass="carousel-item"
+          centerMode={projectsData.length < 3}
         >
           {projectsData.map((project) => (
             <ProjectCard key={project.id} {...project} />
@@ -47,33 +49,25 @@ export { Projects }
 
 const ProjectsSection = styled.section`
   padding: 4rem 2rem;
-  max-width: 80rem;
-  margin: 0 auto;
+  margin: 0 0;
   width: 100%;
-`
-
-const ProjectsTitle = styled.h2`
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: #0ea5e9;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
 `
 
 const CarouselContainer = styled.div`
+  max-width: 80rem;
+  margin: 0 auto;
+  
   .carousel-container {
     padding: 1rem 0;
+    display: flex;
+    justify-content: center;
   }
 
   .carousel-item {
     padding: 0 0.5rem;
+    display: flex;
+    justify-content: center;
   }
 
   .react-multi-carousel-item {
@@ -81,14 +75,20 @@ const CarouselContainer = styled.div`
     justify-content: center;
   }
 
+  /* Center the track when fewer items */
+  .react-multi-carousel-track {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
   /* Custom arrow styling */
   .react-multiple-carousel__arrow {
-    background: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.tertiary};
     min-width: 40px;
     min-height: 40px;
     
     &:hover {
-      background: ${({ theme }) => theme.colors.primaryHover};
+      background: ${({ theme }) => theme.colors.primary};
     }
   }
 
@@ -104,37 +104,17 @@ const CarouselContainer = styled.div`
 const projectsData: ProjectData[] = [
   {
     id: 1,
-    title: 'extension_video_speed',
-    description: 'A web browser extension that allows users to control video playback speed with an intuitive interface.',
-    repoUrl: 'https://github.com/yourusername/extension_video_speed',
-    type: 'repository'
+    title: 'MultiForce',
+    description: 'A Raycast extension that streamlines Salesforce development by enabling quick, seamless logins to multiple orgs directly from your desktop.',
+    repoUrl: 'https://github.com/Decoder22/MultiForce',
+    type: 'project',
+    projectUrl: 'https://www.raycast.com/brian_j_decoder22/multi-force'
   },
   {
     id: 2,
-    title: 'spotify_api_app',
-    description: 'A Spotify-like application that simulates music streaming with custom playlists and recommendations.',
-    repoUrl: 'https://github.com/yourusername/spotify_api_app',
-    type: 'repository'
-  },
-  {
-    id: 3,
-    title: 'URL_Shortener_NextJs',
-    description: 'A URL shortener application built with Next.js for converting long URLs into concise, shareable links.',
-    repoUrl: 'https://github.com/yourusername/url-shortener',
-    type: 'repository'
-  },
-  {
-    id: 4,
-    title: 'weatherApp_pwa',
-    description: 'A Progressive Web App providing real-time weather updates and forecasts.',
-    repoUrl: 'https://github.com/yourusername/weather-app',
-    type: 'repository'
-  },
-  {
-    id: 5,
-    title: 'portfolio_site',
-    description: 'A personal portfolio website built with React and styled-components.',
-    repoUrl: 'https://github.com/yourusername/portfolio',
-    type: 'repository'
+    title: 'SimpleStroke',
+    description: 'An Apple Watch app that allows you to easily keep track of your golf game directly on your watch.',
+    type: 'project',
+    projectUrl: 'https://apps.apple.com/us/app/simplestroke/id1519102080'
   }
 ] 

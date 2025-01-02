@@ -7,7 +7,7 @@ import styled from "styled-components";
 import DesktopNavigation from './desktop-navigation'
 
 const NavigationBar = styled.nav`
-    background: #374151;
+    background: ${({ theme }) => theme.colors.primary};
     height: 5rem;
     width: 100vw;
     position: sticky;

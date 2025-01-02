@@ -48,6 +48,33 @@ const DesktopMenuLink = styled(Link)`
     }
 `;
 
+const NavButton = styled(Link)`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.colors.buttonText};
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: ${({ theme }) => theme.colors.buttonHover};
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+    
+  &:hover::after {
+    width: 100%;
+  }
+`
+
 export default function DesktopNavigation() {
 
     const contactMeLink = function() {
@@ -57,10 +84,10 @@ export default function DesktopNavigation() {
         <NavigationBar>
             <NavigationBarImage src={logo} alt="Logo"></NavigationBarImage>
             <DesktopMenu>
-                <DesktopMenuLink activeClass='active' to='intro'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Home </DesktopMenuLink>
-                <DesktopMenuLink activeClass='active' to='skills'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>About</DesktopMenuLink>
-                <DesktopMenuLink activeClass='active' to='works'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Portfolio</DesktopMenuLink>
-                <DesktopMenuLink activeClass='active' to='contact'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Contact Me</DesktopMenuLink>
+                <NavButton activeClass='active' to='intro'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Home </NavButton>
+                <NavButton activeClass='active' to='skills'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>About</NavButton>
+                <NavButton activeClass='active' to='works'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Portfolio</NavButton>
+                <NavButton activeClass='active' to='contact'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Contact Me</NavButton>
             </DesktopMenu>
         </NavigationBar>
         
