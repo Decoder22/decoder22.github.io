@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
-import logo from '../../assets/logo.png'
-import { Link } from 'react-scroll'
-import { ChatBubble } from '@mui/icons-material'
-import { Menu } from '@mui/icons-material'
-import styled from "styled-components";
+import React from 'react'
+import styled from "styled-components"
 import DesktopNavigation from './desktop-navigation'
+import MobileNavigation from './mobile-navigation'
 
 const NavigationBar = styled.nav`
     background: ${({ theme }) => theme.colors.primary};
@@ -16,19 +13,27 @@ const NavigationBar = styled.nav`
 `
 
 const StyledDesktopNavigation = styled.div`
-    @media screen and (max-width:720px) {
+    @media screen and (max-width: 720px) {
         display: none;
     }
 `
 
+const StyledMobileNavigation = styled.div`
+    display: none;
+    @media screen and (max-width: 720px) {
+        display: block;
+    }
+`
 
 export default function Navigation() {
-
     return (
         <NavigationBar>
             <StyledDesktopNavigation>
                 <DesktopNavigation />
             </StyledDesktopNavigation>
+            <StyledMobileNavigation>
+                <MobileNavigation />
+            </StyledMobileNavigation>
         </NavigationBar>
     )
 }
