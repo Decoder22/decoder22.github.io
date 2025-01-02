@@ -61,7 +61,7 @@ function ContactForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbznRxgxhvV4k5Xe0T3CrwCTTFLHKf9a1VDTm4oWv2RVxJgIISmCK8qLWLJfEz2dYlo0/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbx2XitQsJG0QaLww7sLh_qCbh0RNI3AG-yGUj2q5IE444Ytwr8QLeqLzW-tZ1Dvsfko/exec', {
         method: 'POST',
         headers: {
           "Content-Type": "text/plain;charset=utf-8",

@@ -32,9 +32,7 @@ export function StatusModal({ isOpen, isSuccess, message, onClose, autoClose = f
           <ErrorIcon>✕</ErrorIcon>
         )}
         <Message>{message}</Message>
-        {!isSuccess && (
-          <CloseButton onClick={onClose}>Close</CloseButton>
-        )}
+        <CloseButton onClick={onClose}>Close</CloseButton>
       </ModalContent>
     </ModalOverlay>
   )
