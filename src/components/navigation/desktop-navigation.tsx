@@ -76,20 +76,51 @@ const NavButton = styled(Link)`
 `
 
 export default function DesktopNavigation() {
-
-    const contactMeLink = function() {
-        document.getElementById('contactPage')?.scrollIntoView({behavior: 'smooth'})
-    }
     return (
         <NavigationBar>
             <NavigationBarImage src={logo} alt="Logo"></NavigationBarImage>
             <DesktopMenu>
-                <NavButton activeClass='active' to='intro'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Home </NavButton>
-                <NavButton activeClass='active' to='skills'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>About</NavButton>
-                <NavButton activeClass='active' to='works'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Portfolio</NavButton>
-                <NavButton activeClass='active' to='contact'  spy={true} smooth={true} offset={-50} duration={500} className='desktopMenuListItem'>Contact Me</NavButton>
+                <NavButton 
+                    activeClass='active' 
+                    to='hero'  
+                    spy={true} 
+                    smooth={true} 
+                    offset={-80} 
+                    duration={500}
+                >
+                    Home
+                </NavButton>
+                <NavButton 
+                    activeClass='active' 
+                    to='AboutMe'  
+                    spy={true} 
+                    smooth={true} 
+                    offset={-80} 
+                    duration={500}
+                >
+                    About
+                </NavButton>
+                <NavButton 
+                    activeClass='active' 
+                    to='projects'  
+                    spy={true} 
+                    smooth={true} 
+                    offset={-80} 
+                    duration={500}
+                >
+                    Portfolio
+                </NavButton>
+                <NavButton 
+                    activeClass='active' 
+                    to='contact'  
+                    spy={true} 
+                    smooth={true} 
+                    offset={-80} 
+                    duration={500}
+                >
+                    Contact
+                </NavButton>
             </DesktopMenu>
         </NavigationBar>
-        
     )
 }

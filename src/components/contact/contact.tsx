@@ -5,7 +5,7 @@ import { SectionTitle } from '../common/section-title'
 
 function Contact() {
   return (
-    <ContactSection>
+    <ContactSection id="contact">
       <SectionTitle>Contact</SectionTitle>
       <ContactContainer>
         <ContactForm />

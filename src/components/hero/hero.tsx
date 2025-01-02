@@ -92,9 +92,9 @@ const Subtitle = styled.h2`
   }
 `;
 
-export default function Hero(){
+export default function Hero() {
     return (
-        <HeroContainer>
+        <HeroContainer id="hero">
             <HeroImage src={bg} alt="Hero" />
             <Overlay />
             <TextContainer>
