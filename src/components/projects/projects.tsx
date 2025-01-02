@@ -30,11 +30,11 @@ function Projects() {
       <CarouselContainer>
         <Carousel
           responsive={responsive}
-          infinite={projectsData.length > 1}
+          infinite={false}
           keyBoardControl={true}
           containerClass="carousel-container"
           itemClass="carousel-item"
-          centerMode={projectsData.length < 3}
+          centerMode={false}
         >
           {projectsData.map((project) => (
             <ProjectCard key={project.id} {...project} />
@@ -61,7 +61,6 @@ const CarouselContainer = styled.div`
   .carousel-container {
     padding: 1rem 0;
     display: flex;
-    justify-content: center;
   }
 
   .carousel-item {
