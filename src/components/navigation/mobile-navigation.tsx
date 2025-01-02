@@ -4,10 +4,25 @@ import { Link } from 'react-scroll'
 import { Menu } from '@mui/icons-material'
 import styled from "styled-components"
 
+const MobileMenuContainer = styled.div`
+    position: relative;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const LogoImage = styled.img`
+    height: 3rem;
+    width: 4rem;
+    object-fit: cover;
+    cursor: pointer;
+`
+
 const MobileMenuButton = styled.div`
     position: absolute;
     height: 2rem;
-    top: calc(2.5rem - 1rem); // Half of 5rem nav height minus half of button height
     left: 1rem;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
@@ -16,11 +31,6 @@ const MobileMenuButton = styled.div`
         width: 2rem;
         height: 2rem;
     }
-`
-
-const MobileMenuContainer = styled.div`
-    position: relative;
-    height: 100%;
 `
 
 const MobileMenuOverlay = styled.div<{ isOpen: boolean }>`
@@ -52,11 +62,24 @@ const MobileMenuItem = styled(Link)`
 export default function MobileNavigation() {
     const [showMenu, setShowMenu] = useState(false)
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
     return (
         <MobileMenuContainer>
             <MobileMenuButton onClick={() => setShowMenu(!showMenu)}>
                 <Menu />
             </MobileMenuButton>
+            
+            <LogoImage 
+                src={logo} 
+                alt="Logo" 
+                onClick={scrollToTop}
+            />
             
             <MobileMenuOverlay isOpen={showMenu}>
                 <MobileMenuItem 
